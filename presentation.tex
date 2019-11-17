@@ -1,0 +1,26 @@
+\documentclass{beamer}
+\usetheme{Hannover}
+
+
+\input{preamble.tex}
+
+\begin{document}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+    \begin{frame}
+        \frametitle{Structure}
+        \tableofcontents
+    \end{frame}
+    \section{Motivation}
+    \import{hector/}{intro.tex}
+
+    \section{Integral Infeasibility}
+    \import{basti/}{integral_infeasibility.tex}
+
+    \section{Testing for total dual integrality}
+    \import{basti/}{test_tdi.tex}
+
+    \section{Feedback Sets}
+    \import{hector/}{feedback_sets.tex}
+\end{document}
