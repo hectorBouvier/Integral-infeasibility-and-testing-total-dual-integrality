@@ -6,21 +6,12 @@
 
 \begin{document}
 
-\begin{frame}{Example}
-	\begin{enumerate}
-		\pause
-		\item Item 1:\\
-		 $\mathcal{O}(log(n))$ explanation
-		\pause
-		\item Item 2 
-	\end{enumerate}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%
 %%%%%%    %%%%%%%%
 %%%%%%%%%%%%%%%%%%
 
 \begin{frame}  % important theorems for proofs
+
 	\begin{block}{Complementary Slackness}
 
 		Let $x_0$ and $y_0$ be feasible solutions in the primal and dual problem respectively.
@@ -29,19 +20,15 @@
 
 	\end{block}	
 
-	\pause
-
 	\begin{block}{Farkas Lemma}
 
 		For $A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^{m}$ then exactly one of the following is true: \\
-		1. There exists $x \in \mathbb{R}^n$ such that $Ax \leq b$ ana $x\geq 0$. \\
+		1. There exists $x \in \mathbb{R}^n$ such that $Ax \leq b$ and $x\geq 0$. \\
 		2. There exists $y \in \mathbb{R}^m$ such that $yA=0, yb<0$ and $y \geq 0$. 
 
 	\end{block}
 
-	\pause 
-
-	\begin{block}{Additional note}
+	\begin{block}{Observation}
 
 		Furthermore note, in relation to Farkas Lemma, we have that exactly one of the following is true: \\
 		1. There exists $x \in \mathbb{R}^n$ such that $Ax=b$. \\
@@ -52,6 +39,60 @@
 
 \end{frame}
 
+
+\begin{frame}
+
+	\begin{block}{Linear Systems}
+
+		For a system $Ax \leq b$ of $m$ linear inequalities and a set $T\subset \{1, \dots, m \}$ and $\bar{T} = \{1, \dots, m \} \setminus T$, we let\\ $A_T x = b_T$ and $A_{\bar{T}} x \leq b_{\bar{T}}$ \\denote the system obtained by settig each inequality in T to equaltiy. 
+
+	\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+	\begin{block}{Infeasibility realtion}
+
+		With the use of Farkas lemma for $A_{\bar{T}} x \leq b_{\bar{T}}$ and the observation for $A_T x = b_T$ we see that the system $A_{\bar{T}} x \leq b_{\bar{T}}$, $A_T x = b_T$ is not feasible if there exists a vector $(y_T, y_{\bar{T}})$ such that\\
+
+		\begin{eqnarray*}
+			y_T b_T + y_{\bar{T}} b_{\bar{T}} & < & 0 \\
+			y_T A_T + y_{\bar{T}} A_{\bar{T}} & = & 0 \\
+			y_{\bar{T}} \geq 0.
+		\end{eqnarray*}
+
+	\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+	\begin{block}
+
+		Values of $y_T$ can possibly be negative due to equality constraints. Due to scaling we can still pose the constraints
+
+		\begin{eqnarray*}
+			y_T b_T + y_{\bar{T}} b_{\bar{T}} & < & 0 \\
+			y_T A_T + y_{\bar{T}} A_{\bar{T}} & = & 0 \\
+			y_T \geq -1 & y_{\bar{T}} \geq 0.
+		\end{eqnarray*}
+
+		By construction of the linear system, this now gives us with the use of Farkas Lemma and the observation that if such a vector exists the system $A_{\bar{T}} x \leq b_{\bar{T}}$, $A_T x = b_T$ has not feasible solution. This result is used in the upcomming Theorem.
+
+	\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+	\begin{block}{Definition}
+
+		We say that the \textbf{infisibility} of (2) can be \textbf{proven integrally} if (4) dies in fact have an integral solution. 
+
+	\end{block}
+
+\end{frame}
 
 
 \begin{frame}
@@ -92,11 +133,11 @@
 
 	\begin{block}{Theorem 1}
 
-		Let $A$ be an integral matrix and $b$ a rational vector such that the linear system $Ax \leq b$ has at least one solution. Then $Ax \leq b$ is totally dual integral if and only if\\
+		Let $A\in \mathbb{Z}^{m \times n}$ and $b$ a rational vector such that the linear system $Ax \leq b$ has at least one solution. Then $Ax \leq b$ is totally dual integral \textbf{if and only if}\\
 
 		\begin{itemize}
 
-			\item the rows of $A$ form a Hilbert basis and
+			\item the rows of $A$ form a Hilbert basis, and
 
 			\item for each subset $T$ of inequalities from $Ax\leq b$, if * is infeasible, then this can be proven interally.
 
@@ -106,7 +147,26 @@
 
 	\begin{block}{Reminder - *}
 
-		For $T\subset \{ 1, \dots, m\}$ * refers to the system with $A_T x= b_T$ and $A_{\overline{T}}x\leq b_{\overline{T}}$.
+		For $T\subset \{ 1, \dots, m\}, \bar{T} = \{1, \dots, m \} \setminus T$ * refers to the system with $A_T x= b_T$ and $A_{\bar{T}}x\leq b_{\bar{T}}$.
+
+	\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+	\begin{block}{Theorem 2}
+
+		Let $A\in \mathbb{Z}^{m \times n}$ be an integral matrix and $b$ a rational vector such that the linear system $Ax \leq b$ has at least one solution. Then $Ax \leq b$ is totally dual integral \textbf{if and only if}\\
+
+		\begin{itemize}
+
+			\item the rows of $A$ form a Hilbert basis, and
+
+			\item for each subset $T$ of at most $n$ inequalities from $Ax\leq b$, the linear programming problem \\
+			$min\{yb: yA=1\cdot A_T, y\geq 0 \}$ has an integral solution.
+
+		\end{itemize}
 
 	\end{block}
 
