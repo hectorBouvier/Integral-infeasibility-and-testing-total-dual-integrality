@@ -16,7 +16,7 @@
 
 		Let $x_0$ and $y_0$ be feasible solutions in the primal and dual problem respectively.
 		That is, $Ax_0 \leq b$ and $y_0 A = w; y_0 \geq 0$. \\
-		Then $w x_0 = y_0 b$ iff. $(y_0)_i > 0  \rightarrow A_i x_0 = b_i$
+		Then $w x_0 = y_0 b$ iff. $(y_0)_i > 0  \Rightarrow A_i x_0 = b_i$
 
 	\end{block}	
 
@@ -39,6 +39,9 @@
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%
+%%%%%%    %%%%%%%% stronger linear systems
+%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 
@@ -49,6 +52,10 @@
 	\end{block}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%    %%%%%%%% Infeasibility by Farkas
+%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 
@@ -78,30 +85,103 @@
 			y_T \geq -1 & y_{\bar{T}} \geq 0.
 		\end{eqnarray*}
 
-		By construction of the linear system, this now gives us with the use of Farkas Lemma and the observation that if such a vector exists the system $A_{\bar{T}} x \leq b_{\bar{T}}$, $A_T x = b_T$ has not feasible solution. This result is used in the upcomming Theorem.
+		By construction of the linear system, this now gives us, with the use of Farkas Lemma and the observation, that if such a vector exists the system $A_{\bar{T}} x \leq b_{\bar{T}}$, $A_T x = b_T$ has not feasible solution. This result is used in the upcomming Theorem.
 
 	\end{block}
 
 \end{frame}
 
-\begin{frame}
+%%%%%%%%%%%%%%%%%%
+%%%%%%    %%%%%%%%
+%%%%%%%%%%%%%%%%%%
 
-	\begin{block}{Definition}
+\begin{frame}{Definitions}
 
-		We say that the \textbf{infisibility} of (2) can be \textbf{proven integrally} if (4) dies in fact have an integral solution. 
+	\begin{block}
+
+		We say that the \textbf{infisibility} of (2) can be \textbf{proven integrally} if (4) does in fact have an integral solution. 
+
+	\end{block}
+
+	\begin{block}{Hilbert basis}
+
+		A set of vectors $\{h_1, \dots, h_k\}$ is called Hilbert basis if each integral vector in the cone $C(\{h_1, \dots, h_k\}) :=$\\ $\{\sum_{i\in \{ 1,\dots,k \}} \lambda_i h_i; \lambda_i \geq 0$ for all $i \in \{1,\dots,k\} \}$ can be written as integral combination of $h_1, \dots, h_k$.
 
 	\end{block}
 
 \end{frame}
 
 
+%%%%%%%%%%%%%%%%%%
+%%%%%%    %%%%%%%%
+%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
+
+	\begin{block}{Theorem 1}
+
+		Let $A\in \mathbb{Z}^{m \times n}$ and $b$ a rational vector such that the linear system $Ax \leq b$ has at least one solution. Then $Ax \leq b$ is totally dual integral \textbf{if and only if}\\
+
+		\begin{enumerate}[i]
+
+			\item the rows of $A$ form a Hilbert basis, and
+
+			\item for each subset $T$ of inequalities from $Ax\leq b$, if * is infeasible, then this can be proven interally.
+
+		\end{enumerate}
+
+	\end{block}
+
+	\begin{block}{Reminder - *}
+
+		For $T\subset \{ 1, \dots, m\}, \bar{T} = \{1, \dots, m \} \setminus T$ * refers to the system with $A_T x= b_T$ and $A_{\bar{T}}x\leq b_{\bar{T}}$.
+
+	\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Proof}
 	
-	\begin{block}{Hilbert Basis}
+	\begin{block}{"$\Leftarrow$""}  %% make proof sketch!!
+		\small
+		Suppose $Ax\leq b$ has a solution and (i) and (ii) hold. For $w\in \mathbb{Z}^n$ such that a the optima for $max\{wx:Ax\leq b\}=min\{yb: yA=w, y\geq 0 \}$. We show that the right-hand side has an integral optimal solution.\\
 
-		A set of vectors $\{h_1, \dots, h_k\}$ is called Hilbert Basis if each integral vector in the cone $C(\{h_1, \dots, h_k\}) := \{\sum_{i\in \{ 1,\dots,k \}} \lambda_i h_i; \lambda_i \geq 0$ for all $i \in \{1,\dots,k\} \}$ can be written as integral combination of $h_1, \dots, h_k$.
+		Since the rows of A form a Hilber basis we find a solution $y^*$ chosen such that $y^* b$ is as small as possible. Choose T such that $(y^*)_i>0$ for $i\in T$. Now if the system $A_T x= b_T$, $A_{\bar{T}}x\leq b_{\bar{T}}$ is feasible, then by complementary slackness (see next slide), $y^*$ is optimal. Otherwise, by (ii) we know that there exists an integral solution $\bar{y}$ for (4). From this follow, since $y_T^* > 0$, $y^* + \bar{y}$ is a solution to (6) for which $(y^*+\bar{y})b < y^* b$ and therefore a contradiction. $y^*$ must be optimal integral solution to (6).
 
 	\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+	\begin{block}{"$\Rightarrow$"}
+
+
+
+	\end{block}
+
+\end{frame}
+
+% reminder
+
+\begin{frame}  % important theorems for proofs
+
+	\begin{block}{Complementary Slackness}
+
+		Let $x_0$ and $y_0$ be feasible solutions in the primal and dual problem respectively.
+		That is, $Ax_0 \leq b$ and $y_0 A = w; y_0 \geq 0$. \\
+		Then $w x_0 = y_0 b$ iff. $(y_0)_i > 0  \Rightarrow A_i x_0 = b_i$
+
+	\end{block}	
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%    %%%%%%%% Faces
+%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
 
 	\begin{block}{Faces; minimal Faces}
 
@@ -124,34 +204,23 @@
 	\end{figure}
 \end{frame}
 
+\begin{frame}{Testing for total dual inegrality}
 
-%%%%%%%%%%%%%%%%%%
-%%%%%%    %%%%%%%%
-%%%%%%%%%%%%%%%%%%
+	\begin{block}{Test by Cook, Lovász and Schrijver} 
 
-\begin{frame}
-
-	\begin{block}{Theorem 1}
-
-		Let $A\in \mathbb{Z}^{m \times n}$ and $b$ a rational vector such that the linear system $Ax \leq b$ has at least one solution. Then $Ax \leq b$ is totally dual integral \textbf{if and only if}\\
-
-		\begin{itemize}
-
-			\item the rows of $A$ form a Hilbert basis, and
-
-			\item for each subset $T$ of inequalities from $Ax\leq b$, if * is infeasible, then this can be proven interally.
-
-		\end{itemize}
+		Cook, Lovász and Schrijver (source) developed a polynomial-time test for the total dual integrality. The algorithm is based on the observation that a system $Ax\leq b$ is totally dual integral \textbf{if and only if} for each minimal face $F_J$ the set of active rows form a Hilbert basis. 
+		\parskip=15pt
+		
+		However the test if a set of vectors is a Hilber basis is exponential with respect to the dimension. This motivates the next Theorem.
 
 	\end{block}
-
-	\begin{block}{Reminder - *}
-
-		For $T\subset \{ 1, \dots, m\}, \bar{T} = \{1, \dots, m \} \setminus T$ * refers to the system with $A_T x= b_T$ and $A_{\bar{T}}x\leq b_{\bar{T}}$.
-
-	\end{block}
-
+		
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%    %%%%%%%% Theorem 2
+%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 
