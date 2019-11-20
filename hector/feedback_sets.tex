@@ -6,37 +6,51 @@
 
 \begin{document}
 
-\begin{frame}{Example}
-	\begin{enumerate}
-		\pause
-		\item Item 1:\\
-		 $\mathcal{O}(log(n))$ explanation
-		\pause
-		\item Item 2 
-	\end{enumerate}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%
-%%%%%%    %%%%%%%%
-%%%%%%%%%%%%%%%%%%
-
-% RB-Tree Eigenschaften
+%Presentation of the problem
 
 \begin{frame}
-
-	\begin{block}{Red-Black Tree (RB Tree) Properties}
-		\begin{enumerate}
-			\small
-			\item <2-> 1
-			\item <3-> 2
-			\item <4-> 3
-			\item <5-> 4
-			\item <6-> 5
-		\end{enumerate}
-	\end{block}
+	\frametitle{Linear system of Barahona and Mahjoub problem}
+	\begin{itemize}
+		\item
+		Let $s$ be the following linear system for a graph $D$ :\\
+		$\forall$ directed circuit $C$ of $D$, $\sum\{x_e:e\in C\}\geqslant 1$\\
+		$x_e\geqslant 0$ for each arc $e$ of $D$ 
+		\item
+		Example : 
+		\begin{figure}
+			\centering
+			\includegraphics[width=1.5cm]{images/example1.png}
+		\end{figure}
+		The associated linear system may be written:\\
+		$\begin{pmatrix} -1 & -1 & -1 & 0\\ 0 & -1 & 0 & -1 \end{pmatrix}_A \begin{pmatrix} x_{1->2}\\ x_{2->3}\\ x_{3->1}\\ x_{3->2} \end{pmatrix}_x \leqslant \begin{pmatrix} -1 & -1 \end{pmatrix}_b$\\
+	\end{itemize}
+\end{frame}
+	
+\begin{frame}
+	\frametitle{Barahona and Mahjoub problem}
+	Let $D_5$, the complete symetric directed graph on 5 nodes :
+	\begin{figure}
+		\centering
+		\includegraphics[width=3cm]{images/D5.png}
+	\end{figure}
+	Is $s$ for $D_5$ totally dual integral?
 \end{frame}
 
+%Feedback sets
 
+\begin{frame}
+	\frametitle{Feedback sets}
+	\begin{itemize}
+		\item A 0-1 solution is a solution such that : $\forall e\in D, x_e\in\{0,1\}$
+		\item Such a solution corresponds to a subset of arcs $S\subseteq D$ which meets every circuit in $D$
+		\item $S$ is called a \textit{feedback set}
+		\item Example
+		\begin{figure}
+			\centering
+			\includegraphics[width=1.5cm]{images/example1.png}
+		\end{figure}
+		In this example, $\{2->3\}$ is a feedback set.
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%
 %%%%%%    %%%%%%%%
