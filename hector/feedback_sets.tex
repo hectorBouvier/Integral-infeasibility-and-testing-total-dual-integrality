@@ -50,8 +50,69 @@
 			\includegraphics[width=1.5cm]{images/example1.png}
 		\end{figure}
 		In this example, $\{2->3\}$ is a feedback set.
+	\end{itemize}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Lemma3}
+	\begin{itemize}
+		\item $D_5$ has 84 directed circuits, so we want to reduce that number before computing anything. For that we will need the lemma 3.
+		\item Lemma 3 : Suppose that $D$ is a directed graph with arcs $ij$ and $ji$, that $D_1$ is $D$ with $ji$ deleted, and $D_2$ is $D$ with $ij$ deleted. If $s$ is totally dual integral for both $D_1$ and $D_2$, it is totally dual integral for $D$.
+		\item
+		Example :
+		\begin{figure}
+			\centering
+			$D$ : \includegraphics[width=1.5cm]{images/example1.png}
+			$D_1$ : \includegraphics[width=1.5cm]{images/D1.png} 
+			$D_2$ : \includegraphics[width=1.5cm]{images/D2.png}
+		\end{figure}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{From $D_5$ to $K_5$}
+	\begin{itemize}
+		\item Thanks to lemma 3, we can conclude that if for each orientation of $K_5$, $s$ is totally dual integral, then it is totally dual integral for $D_5$
+		\item 
+		\begin{figure}
+			\centering
+			\includegraphics[width=2cm]{images/D5.png}
+			->
+			\includegraphics[width=1.5cm]{images/d5-1.png}
+			->
+			\includegraphics[width=1.5cm]{images/d5-2.png}
+			...
+			->
+			\includegraphics[width=1.5cm]{images/d9.png}
+		\end{figure}
+		\item This reduces the maximum number of circuits for each orientation to 12.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Barahona and Mahjoub lemma}
+	\begin{itemize}
+		\item We now want to reduce the number of orientation to fully treat. For that we need the lemma 4, from Barahona and Mahjoub.
+		\item Lemma 4 : Let $D$ be an orientation of $K_5$. Then if either some node of D meets all directed circuit or some arc is in no directed circuit, $s$ is totally dual integral for $D$.
+		\item By checking for lemma 4 and isomorphism, there only remain 3 distinct orientation of $K_5$ to treat.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The final computation}
+	\begin{figure}
+		\centering
+		$D(12)$:\includegraphics[width=2cm]{images/d12.png}
+		$D(10)$:\includegraphics[width=2cm]{images/d10.png}
+		$D(9)$:\includegraphics[width=2cm]{images/d9.png}
+	\end{figure}
+	Compute times for each run :
+	\begin{itemize}
+		\item $D(12)$ : 14h 33mn 21s
+		\item $D(10)$ : 2h 52mn 7s
+		\item $D(9)$ : 1h 6mn 3s
+	\end{itemize}
+\end{frame}
 %%%%%%%%%%%%%%%%%%
 %%%%%%    %%%%%%%%
 %%%%%%%%%%%%%%%%%%
